@@ -10,7 +10,6 @@ body {
     background-color: #1f2937; /* Dark background */
     color: #f9fafb; /* Light text for contrast */
     display: flex;
-    
     min-height: 100vh;
     margin: 0;
     flex-direction: column;
@@ -55,22 +54,43 @@ header {
     font-size: 24px;
     font-weight: bold;
     color: #f9fafb; /* Light logo text */
+    margin-left: 40%;
 }
 
 .createAlbum {
+    
+    width: 50%;
+    position: relative; /* Make it relative for positioning child elements */
     background-color: #374151; /* Dark background for album creation */
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: row; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
     margin-bottom: 30px;
-    flex-wrap: wrap;
+    margin-left: 20%;
+    
+}
+
+.cancelBtn {
+    position: absolute; /* Position the button absolutely */
+    top: 10px; /* Distance from the top */
+    right: 10px; /* Distance from the right */
+    background-color: transparent; /* Make the background transparent */
+    color: #ef4444; /* Red color for the close button */
+    border: none; /* Remove border */
+    font-size: 24px; /* Adjust font size */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: all 0.3s ease;
+}
+
+.cancelBtn:hover {
+    transform: scale(1.1); /* Scale effect on hover */
 }
 
 .createAlbumInput {
-    width: 70%;
+    width: 100%; /* Full width */
     padding: 10px;
     font-size: 16px;
     border: 2px solid #f97316;
@@ -79,28 +99,35 @@ header {
     background-color: #4b5563; /* Darker input field */
     color: #f9fafb; /* Light text */
     transition: border-color 0.3s;
+    margin-top: 30px; /* Space below the cancel button */
 }
 
 .createAlbumInput:focus {
     border-color: #fb923c; /* Orange focus */
 }
 
+.buttonGroup {
+    display: flex; /* Flex to arrange buttons side by side */
+    /* justify-content: space-between;  */
+    width: 100%; /* Take full width */
+}
+
 .clearBtn,
 .createBtn {
     padding: 10px 20px;
+    margin-left: 10px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.3s ease;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .clearBtn {
     background-color: #ef4444;
     color: #fff;
     border: none;
-    
 }
 
 .clearBtn:hover {
@@ -112,7 +139,6 @@ header {
     background-color: #f97316;
     color: #fff;
     border: none;
-    
 }
 
 .createBtn:hover {
@@ -193,24 +219,7 @@ header {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Stronger hover shadow */
 }
 
-.cancelBtn {
-    background-color: transparent;
-    color: #ef4444;
-    border: 2px solid #ef4444;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 10px 0;
-}
-
-.cancelBtn:hover {
-    background-color: #ef4444;
-    color: #fff;
-    transform: scale(1.1);
-}
-
-.addBtn{
+.addBtn {
     background-color: transparent;
     color: #fb923c;
     border: 2px solid #c66516;
@@ -222,7 +231,7 @@ header {
     margin-left: 0px;
 }
 
-.addBtn:hover{
+.addBtn:hover {
     background-color: #fb923c;
     color: #fff;
     transform: scale(1.1);
@@ -232,33 +241,5 @@ header {
 @media (max-width: 768px) {
     .albumsGrid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-
-    .createAlbum {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .createAlbumInput {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .clearBtn, .createBtn {
-        width: 100%;
-        margin-top: 10px;
-        padding: 10px;
-    }
-
-    .navbarContainer h1 {
-        font-size: 24px;
-    }
-
-    .album img {
-        width: 50px;
-    }
-
-    .albumTitle {
-        font-size: 20px;
     }
 }

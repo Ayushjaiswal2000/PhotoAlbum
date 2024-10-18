@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./AlbumDashboard.module.css"; // Use module CSS
 
 export const AlbumDashboard = () => {
+    const [showAddAlbum, setShowAddAlbum] = useState(false);
+    const [button,setButton]=useState(false);
+
+   
+    const addAlbum = () => {
+        setShowAddAlbum(true);
+        setButton(true);
+        
+        
+    };
+
+    const close = () => {
+        setShowAddAlbum(false);
+        setButton(false);
+    };
+
     return (
         <div>
             <nav className={styles.nav}>
@@ -13,22 +29,32 @@ export const AlbumDashboard = () => {
             <div className={styles.container}>
                 <header>
                     <div className={styles.logo}>PhotoFolio</div>
-                    <button className={styles.addBtn}>Add Album</button> 
+                   {!button && <button onClick={addAlbum} className={styles.addBtn}>Add Album</button>} 
                 </header>
 
-                
-
-                {/* <div className={styles.createAlbum}>
-                    <input
-                        type="text"
-                        placeholder="Album Name"
-                        className={styles.createAlbumInput}
-                    />
-                    <button className={styles.clearBtn}>Clear</button>
-                    <button className={styles.createBtn}>Create</button>
-                </div> */}
-
-                {/* <button className={styles.cancelBtn}>Cancel</button> */}
+                {showAddAlbum && (
+                    <div className={styles.createAlbum}>
+                        
+                        <button
+                            className={styles.cancelBtn}
+                            onClick={close} // Close the form
+                        >
+                            &times; {/* Cross symbol */}
+                        </button>
+                        <span>Add Album</span>
+                        <input
+                            type="text"
+                            placeholder="Album Name"
+                            className={styles.createAlbumInput}
+                        />
+                         <div className={styles.buttonGroup}>
+                            <button className={styles.clearBtn}>Clear</button>
+                            <button className={styles.createBtn}>Create</button>
+                        </div>
+                        
+                       
+                    </div>
+                )}
 
                 <div className={styles.albumContainer}>
                     <div className={styles.albumTitle}>Your Albums</div>
@@ -57,8 +83,6 @@ export const AlbumDashboard = () => {
                         </div>
                     </div>
                 </div>
-
-               
             </div>
         </div>
     );
