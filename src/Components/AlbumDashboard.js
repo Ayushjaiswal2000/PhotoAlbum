@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import styles from "./AlbumDashboard.module.css"; // Use module CSS
+import styles from "./Album.module.css"; // Use module CSS
+import { AddAlbum } from "./AddAlbum";
+import { db } from "../FireBase";
+import { collection, onSnapshot } from "firebase/firestore";
+import { useEffect } from "react";
 
 export const AlbumDashboard = () => {
     const [showAddAlbum, setShowAddAlbum] = useState(false);
     const [button,setButton]=useState(false);
+    const [albums, setAlbums] = useState([]);
 
    
     const addAlbum = () => {
@@ -13,10 +18,21 @@ export const AlbumDashboard = () => {
         
     };
 
-    const close = () => {
-        setShowAddAlbum(false);
-        setButton(false);
-    };
+    useEffect(() => {
+        const albumsRef = collection(db, "Albums"); // Reference to the Albums collection
+        const unsubscribe = onSnapshot(albumsRef, (snapshot) => {
+            const updatedAlbums = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            setAlbums(updatedAlbums); 
+        });
+    
+        
+        return () => unsubscribe();
+    }, []);
+
+   
 
     return (
         <div>
@@ -32,55 +48,25 @@ export const AlbumDashboard = () => {
                    {!button && <button onClick={addAlbum} className={styles.addBtn}>Add Album</button>} 
                 </header>
 
-                {showAddAlbum && (
-                    <div className={styles.createAlbum}>
-                        
-                        <button
-                            className={styles.cancelBtn}
-                            onClick={close} // Close the form
-                        >
-                            &times; {/* Cross symbol */}
-                        </button>
-                        <span>Add Album</span>
-                        <input
-                            type="text"
-                            placeholder="Album Name"
-                            className={styles.createAlbumInput}
-                        />
-                         <div className={styles.buttonGroup}>
-                            <button className={styles.clearBtn}>Clear</button>
-                            <button className={styles.createBtn}>Create</button>
-                        </div>
-                        
-                       
-                    </div>
-                )}
+                {showAddAlbum && <AddAlbum setShowAddAlbum={setShowAddAlbum}  setButton={setButton} />
+                    
+                }
 
                 <div className={styles.albumContainer}>
                     <div className={styles.albumTitle}>Your Albums</div>
 
                     <div className={styles.albumsGrid}>
-                        <div className={styles.album}>
-                            <img
-                                src="https://img.icons8.com/ios-filled/50/000000/picture.png"
-                                alt="Album"
-                            />
-                            <p>Album 1</p>
-                        </div>
-                        <div className={styles.album}>
-                            <img
-                                src="https://img.icons8.com/ios-filled/50/000000/picture.png"
-                                alt="Album"
-                            />
-                            <p>Album 2</p>
-                        </div>
-                        <div className={styles.album}>
-                            <img
-                                src="https://img.icons8.com/ios-filled/50/000000/picture.png"
-                                alt="Album"
-                            />
-                            <p>Album 3</p>
-                        </div>
+                        
+                        {albums.map((album) => (
+                            <div key={album.id} className={styles.album}>
+                                <p>{album.name}</p>
+                                <img
+                                    src={album.img || "https://img.icons8.com/ios-filled/50/000000/picture.png"}
+                                    alt={album.name}
+                                />
+                                
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

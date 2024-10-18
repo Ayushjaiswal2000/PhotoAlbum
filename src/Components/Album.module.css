@@ -54,11 +54,9 @@ header {
     font-size: 24px;
     font-weight: bold;
     color: #f9fafb; /* Light logo text */
-    margin-left: 40%;
 }
 
 .createAlbum {
-    
     width: 50%;
     position: relative; /* Make it relative for positioning child elements */
     background-color: #374151; /* Dark background for album creation */
@@ -66,11 +64,9 @@ header {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     display: flex;
-    flex-direction: row; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the start */
-    margin-bottom: 30px;
-    margin-left: 20%;
-    
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    margin: 30px auto; /* Center the create album section */
 }
 
 .cancelBtn {
@@ -89,6 +85,19 @@ header {
     transform: scale(1.1); /* Scale effect on hover */
 }
 
+.headingSpan {
+    font-size: 1.5rem; /* Adjusts the font size for prominence */
+    font-weight: bold; /* Makes the text bold */
+    color: #f9fafb; /* Light text color for contrast against the dark background */
+    background-color: #374151; /* Match the dark background of your app */
+    padding: 10px 15px; /* Adds padding for better spacing */
+    border-radius: 8px; /* Rounds the corners for a smoother look */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow for depth */
+    display: inline-block; /* Keeps it inline while allowing width and height */
+    text-align: center; /* Centers the text */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
 .createAlbumInput {
     width: 100%; /* Full width */
     padding: 10px;
@@ -99,7 +108,7 @@ header {
     background-color: #4b5563; /* Darker input field */
     color: #f9fafb; /* Light text */
     transition: border-color 0.3s;
-    margin-top: 30px; /* Space below the cancel button */
+    margin-top: 10px; /* Space below the cancel button */
 }
 
 .createAlbumInput:focus {
@@ -108,8 +117,9 @@ header {
 
 .buttonGroup {
     display: flex; /* Flex to arrange buttons side by side */
-    /* justify-content: space-between;  */
     width: 100%; /* Take full width */
+    justify-content: space-between; /* Space out buttons evenly */
+    margin-top: 20px; /* Space above button group */
 }
 
 .clearBtn,
@@ -121,7 +131,6 @@ header {
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.3s ease;
-    margin-top: 30px;
 }
 
 .clearBtn {
@@ -182,6 +191,8 @@ header {
     width: 60px;
     margin-bottom: 10px;
     z-index: 2;
+    margin-left: 60px;
+    margin-top: 10px;
 }
 
 .album p {
@@ -241,5 +252,13 @@ header {
 @media (max-width: 768px) {
     .albumsGrid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .createAlbum {
+        width: 90%; /* Make createAlbum full width on smaller screens */
+    }
+
+    .createAlbumInput {
+        margin-top: 20px; /* Adjust spacing for input */
     }
 }
