@@ -262,3 +262,48 @@ header {
         margin-top: 20px; /* Adjust spacing for input */
     }
 }
+
+
+.back_button {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px; /* Adjust gap as needed for spacing */
+    padding: 7px 12px;
+    border: none;
+    background: none;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.back_button svg {
+    vertical-align: middle;
+}
+
+.back_button:hover {
+    color: #fb923c;
+}
+
+.album {
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.zoomedImage {
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
