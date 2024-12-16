@@ -21,10 +21,20 @@ Photo Album Manager is a simple and intuitive web application that allows users 
 ## 🚀 Live Demo  
 Check out the live application here: [Photo Album Manager](https://photo-album-navy.vercel.app/).  
 
+## 🖼️ Screenshots  
+
+### Dashboard View  
+![Dashboard View](![image](https://github.com/user-attachments/assets/e343899f-b987-4937-a6e0-3a3cd5d76a40)
+)  
+ 
+### Album Images View  
+![Album Images View](![image](https://github.com/user-attachments/assets/d8ae8fba-e41d-471c-a5fe-e5ae42e55d1e)
+)  
+
 ## ⚙️ Installation  
 Follow these steps to set up and run the project locally:  
 
 ### Clone the Repository  
 ```bash  
-git clone https://github.com/your-username/photo-album-manager.git  
+git clone https://github.com/Ayushjaiswal2000/photo-album-manager.git  
 cd photo-album-manager  
