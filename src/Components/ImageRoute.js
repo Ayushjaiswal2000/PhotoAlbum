@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Album.module.css"; // Use module CSS
+import styles from "./ImageRoute.module.css"; // Use module CSS
 import { db } from "../FireBase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { AddImage } from "./AddImage";
 
 export const ImageDashboard = ({ album, goBack }) => {
   const [showAddImage, setShowAddImage] = useState(false);
   const [button, setButton] = useState(false);
   const [images, setImages] = useState([]);
-
   const [zoomedImage, setZoomedImage] = useState(null);
 
   const openImage = (image) => {
@@ -22,6 +21,17 @@ export const ImageDashboard = ({ album, goBack }) => {
   const addImage = () => {
     setShowAddImage(true);
     setButton(true);
+  };
+
+  const deleteImage = async (imageId, e) => {
+    e.stopPropagation(); // Prevent triggering the album click
+    try {
+      const imageDocRef = doc(db, "Images", imageId);
+      await deleteDoc(imageDocRef);
+      setImages(images.filter((image) => image.id !== imageId)); // Remove from UI
+    } catch (error) {
+      console.error("Error deleting image: ", error);
+    }
   };
 
   useEffect(() => {
@@ -60,7 +70,6 @@ export const ImageDashboard = ({ album, goBack }) => {
                 strokeLinejoin="round"
                 transform="translate(0, 12)" /* Adds a top margin of 5px */
               />
-
               <text
                 x="20"
                 y="17"
@@ -72,18 +81,13 @@ export const ImageDashboard = ({ album, goBack }) => {
                 Back
               </text>
             </svg>
-
-            {/* <span id="back_button" style={{ marginTop: 0 }}>
-              Back
-            </span> */}
           </button>
-          <h1>Photo Album Manager</h1>
+          <h1>PhotoFolio</h1>
         </div>
       </nav>
 
       <div className={styles.container}>
         <header>
-          <div className={styles.logo}>PhotoFolio</div>
           {!button && (
             <button onClick={addImage} className={styles.addBtn}>
               Add Image
@@ -118,6 +122,21 @@ export const ImageDashboard = ({ album, goBack }) => {
                     }
                     alt={image.name}
                   />
+                  <button
+                    onClick={(e) => deleteImage(image.id, e)} // Pass correct imageId and stop propagation
+                    className={styles.deleteBtn}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      fill="currentColor"
+                      className="bi bi-x"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 6.793l2.646-2.647a.5.5 0 0 1 .708.708L8.707 7.5l2.647 2.646a.5.5 0 0 1-.708.708L8 8.207l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 7.5 4.646 4.854a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                  </button>
                 </div>
               ))
             ) : (

@@ -1,169 +1,115 @@
-/* General Reset */
-* {
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    overflow: hidden; /* Prevents scrollbars */
+    height: 100%;
 }
 
-body {
-    background-color: #1f2937; /* Dark background */
-    color: #f9fafb; /* Light text for contrast */
-    display: flex;
+.pageContainer {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
     min-height: 100vh;
-    margin: 0;
+    display: flex;
     flex-direction: column;
+    overflow: hidden; /* Prevents scrollbars */
 }
 
-nav {
-    width: 100%;
-    background-color: #374151; /* Darker navbar */
-    padding: 15px 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+.nav {
+    background-color: #4caf50;
+    padding: 1rem 2rem;
 }
 
 .navbarContainer {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
-}
 
-.navbarContainer h1 {
-    font-size: 28px;
-    font-weight: bold;
-    color: #f9fafb; /* Light text for navbar */
-}
-
-.container {
-    width: 95%;
-    max-width: 1200px;
-    margin: 20px auto;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 1.5rem;
+    color: white;
     font-weight: bold;
-    color: #f9fafb; /* Light logo text */
 }
 
-.createAlbum {
-    width: 50%;
-    position: relative; /* Make it relative for positioning child elements */
-    background-color: #374151; /* Dark background for album creation */
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
+.navLinks {
+    list-style: none;
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    margin: 30px auto; /* Center the create album section */
+    gap: 1.5rem;
+    margin-left: -20rem; /* Adjust this value to move it to the left */
 }
-
-.cancelBtn {
-    position: absolute; /* Position the button absolutely */
-    top: 10px; /* Distance from the top */
-    right: 10px; /* Distance from the right */
-    background-color: transparent; /* Make the background transparent */
-    color: #ef4444; /* Red color for the close button */
-    border: none; /* Remove border */
-    font-size: 24px; /* Adjust font size */
-    cursor: pointer; /* Change cursor to pointer */
-    transition: all 0.3s ease;
-}
-
-.cancelBtn:hover {
-    transform: scale(1.1); /* Scale effect on hover */
-}
-
-.headingSpan {
-    font-size: 1.5rem; /* Adjusts the font size for prominence */
-    font-weight: bold; /* Makes the text bold */
-    color: #f9fafb; /* Light text color for contrast against the dark background */
-    background-color: #374151; /* Match the dark background of your app */
-    padding: 10px 15px; /* Adds padding for better spacing */
-    border-radius: 8px; /* Rounds the corners for a smoother look */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow for depth */
-    display: inline-block; /* Keeps it inline while allowing width and height */
-    text-align: center; /* Centers the text */
-    margin-bottom: 20px; /* Space below the heading */
-}
-
-.createAlbumInput {
-    width: 100%; /* Full width */
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #f97316;
-    border-radius: 8px;
-    outline: none;
-    background-color: #4b5563; /* Darker input field */
-    color: #f9fafb; /* Light text */
-    transition: border-color 0.3s;
-    margin-top: 10px; /* Space below the cancel button */
-}
-
-.createAlbumInput:focus {
-    border-color: #fb923c; /* Orange focus */
-}
-
-.buttonGroup {
-    display: flex; /* Flex to arrange buttons side by side */
-    width: 100%; /* Take full width */
-    justify-content: space-between; /* Space out buttons evenly */
-    margin-top: 20px; /* Space above button group */
-}
-
-.clearBtn,
-.createBtn {
-    padding: 10px 20px;
-    margin-left: 10px;
-    font-size: 16px;
-    font-weight: bold;
+.deleteBtn {
+    background-color: transparent;
+    color: red;
+    border: none;
+    font-size: 2rem; /* Increase the size for a bigger icon */
     cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold; /* Make the icon bold */
+  }
+  
+  .deleteBtn:hover {
+    color: darkred;
+  }
+  
+  
+
+.navLinks li {
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
 }
 
-.clearBtn {
-    background-color: #ef4444;
-    color: #fff;
+.mainContent {
+    flex: 1;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.heading h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.heading p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.addBtn {
+    background-color: #4caf50;
+    color: white;
     border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.clearBtn:hover {
-    background-color: #dc2626;
-    transform: scale(1.1);
+.addBtn:hover {
+    background-color: #45a049;
 }
 
-.createBtn {
-    background-color: #f97316;
-    color: #fff;
-    border: none;
+.albumSection h3 {
+    margin-bottom: 1rem;
 }
 
-.createBtn:hover {
-    background-color: #fb923c;
-    transform: translateY(-3px);
-}
-
-.albumContainer {
-    margin-top: 40px;
-}
-
-.albumTitle {
-    font-size: 24px;
-    font-weight: bold;
-    color: #f9fafb; /* Light album title */
-    margin-bottom: 20px;
+.albumSection {
+    padding: 20px;
+    background-color: #f9f9f9;
 }
 
 .albumsGrid {
@@ -172,149 +118,76 @@ header {
     gap: 20px;
 }
 
-.album {
-    background-color: #374151;
-    padding: 20px;
-    align-items: center;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Darker shadow */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.albumCard {
     position: relative;
     overflow: hidden;
-}
-.backIcon {
-    margin-left: 5px; /* Default margin for larger screens */
-  }
-  @media screen and (max-width: 768px) {
-    .backIcon {
-      margin-left: -20px; /* Remove or adjust the margin for mobile screens */
-    }
-  }
-.album img {
-    width: 60px; /* Set image width */
-    height: 60px; /* Ensure image is square */
-    object-fit:contain; /* Ensures the image doesn’t stretch */
-     /* Makes the image circular */
-    margin-bottom: 10px; /* Spacing below the image */
-    z-index: 2; /* Keeps the image above the background */
-}
-
-.album p {
-    font-size: 16px; /* Sets the font size */
-    font-weight: 600; /* Makes the text bold */
-    color: #f9fafb; /* Light text color for contrast */
-    z-index: 2; /* Ensures the text appears above other elements */
-    margin: 10px 0; /* Adds spacing around the text */
-    position: relative; /* Allows for potential layering or animations */
-}
-
-.album::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: -50px;
-    height: 200%;
-    width: 200%;
-    background-color: #fb923c;
-    border-radius: 50%;
-    z-index: 1;
-    transition: all 0.4s ease;
-    transform: scale(0);
-}
-
-.album:hover::before {
-    transform: scale(1);
-}
-
-.album:hover img, 
-.album:hover p {
-    color: #fff;
-}
-
-.album:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Stronger hover shadow */
-}
-
-.addBtn {
-    background-color: transparent;
-    color: #fb923c;
-    border: 2px solid #c66516;
-    padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 10px 0;
-    margin-left: 0px;
 }
 
-.addBtn:hover {
-    background-color: #fb923c;
-    color: #fff;
+.albumCard:hover {
+    transform: scale(1.05);
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.albumImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.albumCard:hover .albumImage {
     transform: scale(1.1);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .albumsGrid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-    
-    .createAlbum {
-        width: 90%; /* Make createAlbum full width on smaller screens */
-    }
-
-    .createAlbumInput {
-        margin-top: 20px; /* Adjust spacing for input */
-    }
-}
-
-
-.back_button {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px; /* Adjust gap as needed for spacing */
-    padding: 7px 12px;
-    border: none;
-    background: none;
-    color: #ffffff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.back_button svg {
-    vertical-align: middle;
-}
-
-.back_button:hover {
-    color: #fb923c;
-}
-
-.album {
-    cursor: pointer;
+    filter: brightness(0.8);
 }
 
 .overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.zoomedImage {
-    max-width: 90%;
-    max-height: 90%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.albumCard:hover .overlay {
+    opacity: 1;
+}
+
+.footer {
+    background-color: #4caf50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.albumName {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.footerLinks {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
 }

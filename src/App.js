@@ -1,12 +1,10 @@
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+import { AlbumDashboard } from "./Components/AlbumDashboard";
 
-import './App.css';
-import { AlbumDashboard } from './Components/AlbumDashboard';
-
-function App() {
-  return (
-    <AlbumDashboard/>
-   
-  );
-}
+// Main React Component
+const App = () => {
+  return <AlbumDashboard />;
+};
 
 export default App;

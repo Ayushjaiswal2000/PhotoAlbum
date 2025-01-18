@@ -1,0 +1,197 @@
+/* Modal container for the Add Image form */
+.createImage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Close button for the modal */
+.cancelBtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #ff0000;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-bottom: 1rem;
+}
+
+/* Modal heading */
+.headingSpan {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Input field for image name */
+.createImageInput {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.createImageInput:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Button group container */
+.buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Clear button styles */
+.clearBtn {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.clearBtn:hover {
+    background-color: #f5c6cb;
+}
+
+/* Upload button styles */
+.uploadBtn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.uploadBtn:hover {
+    background-color: #218838;
+}
+
+/* Overlay background for modal */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(111, 111, 117, 0.9); /* Blue with transparency */
+    z-index: 1; /* Ensure it sits below the modal content */
+}
+.createBtn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+.deleteBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .deleteBtn svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+.createBtn:hover {
+    background-color: #218838;
+}
+
+/* Image input container */
+.imageInputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.imageInputLabel {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.imageInput {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.imageInput:hover {
+    border-color: #007bff;
+}
+
+.imageInput:focus {
+    border-color: #0056b3;
+}
+
+.preview {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.previewImage {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.previewImage:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.imageInputNote {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    margin-top: 5px;
+}
